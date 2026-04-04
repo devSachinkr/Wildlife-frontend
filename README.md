@@ -1,73 +1,86 @@
-# React + TypeScript + Vite
+# Forest & Wildlife Monitoring Dashboard 🌲🐅
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+A comprehensive full-stack web application designed for conservationists, researchers, and environmental organizations to track and monitor forest conservation efforts and wildlife activities in real-time.
 
-Currently, two official plugins are available:
+## Problem Statement
+Create an interactive dashboard for tracking forest and wildlife conservation efforts. Conservationists, researchers, and environmental organizations will register and provide updates about forest and wildlife monitoring activities. Administrators will validate participants, and users can filter content based on location, species, and conservation status to stay informed about environmental protection initiatives.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Key Features
 
-## React Compiler
+### For Conservationists & Researchers
+- 📝 Report monitoring activities (patrols, wildlife sightings, illegal activities)
+- 🗺️ View interactive maps of forest locations
+- 🐅 Track species and their conservation status
+- 📊 Analyze data through interactive charts
+- 🔍 Filter activities by location, species, and status
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### For Administrators
+- ✅ Verify and validate reported activities
+- 🏢 Manage participant organizations
+- 📍 Add/edit forest locations
+- 🦁 Manage species database
+- 👥 Manage user roles and permissions
 
-## Expanding the ESLint configuration
+### Technical Features
+- 🎨 Dark/Light mode with 6 color palettes (Forest, Ocean, Sunset, Midnight, Slack, VS Code)
+- 📱 Fully responsive design
+- ⚡ Real-time data updates
+- 🔐 JWT authentication with role-based access
+- 🗺️ Interactive maps using Leaflet
+- 📈 Beautiful charts using Recharts
+- 🎭 Smooth animations with Framer Motion
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Frontend
+- React.js + Vite + TypeScript
+- Tailwind CSS + Shadcn/UI
+- Framer Motion (Animations)
+- Zustand (State Management)
+- React Query (Data Fetching)
+- Leaflet (Maps)
+- Recharts (Charts)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Backend
+- Node.js + Express + TypeScript
+- Prisma ORM
+- PostgreSQL (Neon Tech)
+- JWT + Bcrypt (Authentication)
+- Cloudinary (Image Upload)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Deployment
+- Frontend: Vercel
+- Backend: Render
+- Database: Neon PostgreSQL
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## User Roles
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Role | Permissions |
+|------|-------------|
+| **Admin** | Full access - verify activities, manage all data, user management |
+| **Conservationist** | Report activities, view data, edit own reports |
+| **Researcher** | Research surveys, view data, analyze trends |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Screenshots
+[Add screenshots here]
+
+## Live Demo
+[Add deployed link here]
+
+## Setup Instructions
+
+### Prerequisites
+- Node.js (v18+)
+- PostgreSQL (or Neon account)
+- Cloudinary account (for image upload)
+
+### Backend Setup
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Fill environment variables
+npx prisma generate
+npx prisma migrate dev
+npm run dev
