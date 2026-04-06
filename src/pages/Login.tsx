@@ -197,12 +197,12 @@ export const Login = () => {
             </motion.div>
           </CardContent>
 
-          <CardFooter className="flex flex-col space-y-4">
+          <CardFooter className="flex flex-col space-y-4 mt-5">
             <motion.div variants={itemVariants} className="w-full">
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full h-11 group relative overflow-hidden bg-linear-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary transition-all duration-300"
+                className="w-full h-11  group relative overflow-hidden bg-linear-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary transition-all duration-300"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   {isSubmitting ? (
