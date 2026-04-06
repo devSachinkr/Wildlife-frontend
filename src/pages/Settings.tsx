@@ -49,7 +49,6 @@ import {
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { AnimatedCard } from "../components/animations/AnimatedCard";
-import { PageTransition } from "../components/animations/PageTransition";
 
 const palettes: {
   id: ColorPalette;
@@ -204,7 +203,7 @@ export const Settings = () => {
   } as const;
 
   return (
-    <PageTransition>
+    <div>
       <div className="space-y-4 sm:space-y-6 max-w-full px-2 sm:px-0">
         <motion.div
           initial={{ x: -50, opacity: 0 }}
@@ -268,9 +267,9 @@ export const Settings = () => {
 
             <TabsContent
               value="appearance"
-              className="mt-4 sm:mt-6 space-y-4 sm:space-y-6"
+              className="mt-4 sm:mt-6 space-y-4 sm:space-y-6 "
             >
-              <AnimatedCard hoverEffect="glow" delay={0.1}>
+              <AnimatedCard hoverEffect="glow" delay={0.1} className="p-5">
                 <CardHeader className="pb-3 sm:pb-4">
                   <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
                     <Moon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
@@ -324,7 +323,7 @@ export const Settings = () => {
                 </CardContent>
               </AnimatedCard>
 
-              <AnimatedCard hoverEffect="glow" delay={0.2}>
+              <AnimatedCard hoverEffect="glow" delay={0.2} className="p-5">
                 <CardHeader className="pb-3 sm:pb-4">
                   <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
                     <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
@@ -423,7 +422,7 @@ export const Settings = () => {
               value="profile"
               className="mt-4 sm:mt-6 space-y-4 sm:space-y-6"
             >
-              <AnimatedCard hoverEffect="glow" delay={0.1}>
+              <AnimatedCard hoverEffect="glow" delay={0.1} className="p-5">
                 <CardHeader className="pb-3 sm:pb-4">
                   <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
                     <User className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
@@ -538,7 +537,7 @@ export const Settings = () => {
               value="notifications"
               className="mt-4 sm:mt-6 space-y-4 sm:space-y-6"
             >
-              <AnimatedCard hoverEffect="glow" delay={0.1}>
+              <AnimatedCard hoverEffect="glow" delay={0.1} className="p-5">
                 <CardHeader className="pb-3 sm:pb-4">
                   <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
                     <BellRing className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
@@ -585,7 +584,7 @@ export const Settings = () => {
               value="security"
               className="mt-4 sm:mt-6 space-y-4 sm:space-y-6"
             >
-              <AnimatedCard hoverEffect="glow" delay={0.1}>
+              <AnimatedCard hoverEffect="glow" delay={0.1} className="p-5">
                 <CardHeader className="pb-3 sm:pb-4">
                   <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
                     <Key className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
@@ -674,7 +673,7 @@ export const Settings = () => {
                 </CardContent>
               </AnimatedCard>
 
-              <AnimatedCard hoverEffect="glow" delay={0.2}>
+              <AnimatedCard hoverEffect="glow" delay={0.2} className="p-5">
                 <CardHeader className="pb-3 sm:pb-4">
                   <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
                     <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
@@ -716,7 +715,7 @@ export const Settings = () => {
                 </CardContent>
               </AnimatedCard>
 
-              <AnimatedCard hoverEffect="glow" delay={0.3}>
+              <AnimatedCard hoverEffect="glow" delay={0.3} className="p-5">
                 <CardHeader className="pb-3 sm:pb-4">
                   <CardTitle className="flex items-center gap-2 text-base sm:text-lg text-destructive">
                     <LogOut className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -752,6 +751,6 @@ export const Settings = () => {
           </Tabs>
         </motion.div>
       </div>
-    </PageTransition>
+    </div>
   );
 };

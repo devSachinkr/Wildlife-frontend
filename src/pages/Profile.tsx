@@ -33,7 +33,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { Badge } from "../components/ui/badge";
 import { Progress } from "../components/ui/progress";
 import { Separator } from "../components/ui/separator";
-import { PageTransition } from "../components/animations/PageTransition";
 import { AnimatedCard } from "../components/animations/AnimatedCard";
 import { activityService } from "../services/activity.service";
 import toast from "react-hot-toast";
@@ -121,7 +120,7 @@ export const Profile = () => {
   ];
 
   return (
-    <PageTransition>
+    <div>
       <div className="max-w-6xl mx-auto space-y-6">
         <motion.div
           initial={{ x: -50, opacity: 0 }}
@@ -215,7 +214,7 @@ export const Profile = () => {
               </CardContent>
             </AnimatedCard>
 
-            <AnimatedCard hoverEffect="glow" delay={0.2}>
+            <AnimatedCard hoverEffect="glow" delay={0.2} className="p-5"> 
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Award className="h-5 w-5 text-primary" />
@@ -294,7 +293,7 @@ export const Profile = () => {
               })}
             </div>
 
-            <AnimatedCard hoverEffect="glow" delay={0.3}>
+            <AnimatedCard hoverEffect="glow" delay={0.3} className="p-5">
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Clock className="h-5 w-5 text-primary" />
@@ -347,7 +346,7 @@ export const Profile = () => {
               </CardContent>
             </AnimatedCard>
 
-            <AnimatedCard hoverEffect="glow" delay={0.4}>
+            <AnimatedCard hoverEffect="glow" delay={0.4} className="p-5">
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
                   <TrendingUp className="h-5 w-5 text-primary" />
@@ -476,6 +475,6 @@ export const Profile = () => {
           </motion.div>
         )}
       </div>
-    </PageTransition>
+    </div>
   );
 };

@@ -1,35 +1,35 @@
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
-import { useAuthStore } from '../stores/authStore'
-import { dashboardService } from '../services/dashboard.service'
-import { StatsCards } from '../components/dashboard/StatsCards'
-import { RecentActivities } from '../components/dashboard/RecentActivities'
-import { SpeciesStatus } from '../components/dashboard/SpeciesStatus'
-import { LocationMap } from '../components/dashboard/LocationMap'
-import { RecentParticipants } from '../components/dashboard/RecentParticipants'
-import { motion } from 'framer-motion'
-import { ActivityChart } from '../components/dashboard/ActivityChart'
-import { DashboardSkeleton } from '../components/skeletons/DashboardSkeleton'
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { useAuthStore } from "../stores/authStore";
+import { dashboardService } from "../services/dashboard.service";
+import { StatsCards } from "../components/dashboard/StatsCards";
+import { RecentActivities } from "../components/dashboard/RecentActivities";
+import { SpeciesStatus } from "../components/dashboard/SpeciesStatus";
+import { LocationMap } from "../components/dashboard/LocationMap";
+import { RecentParticipants } from "../components/dashboard/RecentParticipants";
+import { motion } from "framer-motion";
+import { ActivityChart } from "../components/dashboard/ActivityChart";
+import { DashboardSkeleton } from "../components/skeletons/DashboardSkeleton";
 
 export const Dashboard = () => {
-  const navigate = useNavigate()
-  const { isAuthenticated, isLoading: authLoading } = useAuthStore()
+  const navigate = useNavigate();
+  const { isAuthenticated, isLoading: authLoading } = useAuthStore();
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ['dashboard'],
+    queryKey: ["dashboard"],
     queryFn: dashboardService.getDashboardData,
     enabled: isAuthenticated,
-  })
+  });
 
   useEffect(() => {
     if (!authLoading && !isAuthenticated) {
-      navigate('/login')
+      navigate("/login");
     }
-  }, [isAuthenticated, authLoading, navigate])
+  }, [isAuthenticated, authLoading, navigate]);
 
   if (authLoading || isLoading) {
-    return <DashboardSkeleton />
+    return <DashboardSkeleton />;
   }
 
   if (error) {
@@ -37,18 +37,18 @@ export const Dashboard = () => {
       <div className="flex items-center justify-center h-[60vh]">
         <div className="text-center">
           <p className="text-destructive">Failed to load dashboard</p>
-          <button 
-            onClick={() => window.location.reload()} 
+          <button
+            onClick={() => window.location.reload()}
             className="mt-2 text-primary hover:underline"
           >
             Try again
           </button>
         </div>
       </div>
-    )
+    );
   }
 
-  const dashboardData = data?.data
+  const dashboardData = data?.data;
 
   return (
     <div className="space-y-6">
@@ -62,14 +62,13 @@ export const Dashboard = () => {
             Dashboard
           </h1>
           <p className="text-muted-foreground mt-1">
-            Welcome back! Here's what's happening with your conservation efforts.
+            Welcome back! Here's what's happening with your conservation
+            efforts.
           </p>
         </div>
       </motion.div>
 
-      {dashboardData && (
-        <StatsCards stats={dashboardData.overview} />
-      )}
+      {dashboardData && <StatsCards stats={dashboardData.overview} />}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
@@ -83,7 +82,7 @@ export const Dashboard = () => {
         </div>
         <div>
           {dashboardData && (
-            <SpeciesStatus 
+            <SpeciesStatus
               speciesByStatus={dashboardData.species.byConservationStatus}
               totalSpecies={dashboardData.overview.totalSpecies}
             />
@@ -92,20 +91,19 @@ export const Dashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {dashboardData && (
-          <LocationMap locations={dashboardData.mapData} />
-        )}
+        {dashboardData && <LocationMap locations={dashboardData.mapData} />}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {dashboardData && (
           <>
             <RecentActivities activities={dashboardData.recent.activities} />
-            <RecentParticipants participants={dashboardData.recent.participants} />
+            <RecentParticipants
+              participants={dashboardData.recent.participants}
+            />
           </>
         )}
       </div>
     </div>
-  )
-}
-
+  );
+};
