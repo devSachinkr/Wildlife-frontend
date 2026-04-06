@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   PawPrint,
@@ -23,7 +23,6 @@ import {
 } from "../ui/tooltip";
 import { useAuthStore } from "../../stores/authStore";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-
 interface SidebarProps {
   collapsed: boolean;
   setCollapsed: (collapsed: boolean) => void;
@@ -50,10 +49,11 @@ export const Sidebar = ({
   const location = useLocation();
   const { user, logout } = useAuthStore();
 
-  const handleLogout = () => {
-    logout();
-    window.location.href = "/login";
-  };
+  const navigate = useNavigate();
+ const handleLogout = () => {
+  logout();
+  navigate("/login"); // ✅
+};
 
   const sidebarContent = (
     <div className="flex flex-col h-full bg-card border-r border-border">
