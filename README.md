@@ -62,11 +62,9 @@ Create an interactive dashboard for tracking forest and wildlife conservation ef
 | **Conservationist** | Report activities, view data, edit own reports |
 | **Researcher** | Research surveys, view data, analyze trends |
 
-## Screenshots
-[Add screenshots here]
 
 ## Live Demo
-[Add deployed link here]
+forest-mystery.vercel.app
 
 ## Setup Instructions
 
