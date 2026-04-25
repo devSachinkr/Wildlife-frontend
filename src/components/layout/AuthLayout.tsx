@@ -24,7 +24,7 @@ export const AuthLayout = () => {
               <Leaf className="h-6 w-6 text-primary-foreground" />
             </div>
             <span className="text-2xl font-bold bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
-              ForestWatch
+              Wildlife
             </span>
           </motion.div>
 

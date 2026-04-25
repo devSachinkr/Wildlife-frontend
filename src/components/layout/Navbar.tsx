@@ -1,10 +1,10 @@
+import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, Bell, Search, Sparkles } from 'lucide-react'
+import { Menu, Bell, Search, Sparkles, Home, Info } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 import { Badge } from '../ui/badge'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-
 import { useAuthStore } from '../../stores/authStore'
 import { useState } from 'react'
 import { cn } from '../../lib/utils'
@@ -32,6 +32,7 @@ export const Navbar = ({ setMobileOpen, onSearch }: NavbarProps) => {
       className="sticky top-0 z-40 bg-background/80 backdrop-blur-xl border-b border-border"
     >
       <div className="flex items-center justify-between h-16 px-4 md:px-6">
+        {/* Left Section */}
         <div className="flex items-center gap-4">
           <Button
             variant="ghost"
@@ -47,15 +48,18 @@ export const Navbar = ({ setMobileOpen, onSearch }: NavbarProps) => {
             animate={{ scale: 1, opacity: 1 }}
             className="hidden md:flex items-center gap-2"
           >
-            <div className="w-8 h-8 rounded-lg bg-linear-to-br from-primary to-secondary flex items-center justify-center">
-              <Sparkles className="h-4 w-4 text-primary-foreground" />
-            </div>
-            <span className="font-semibold text-lg bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Forest & Wildlife Monitoring
-            </span>
+            <Link to="/" className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                <Sparkles className="h-4 w-4 text-primary-foreground" />
+              </div>
+              <span className="font-semibold text-lg bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Forest & Wildlife Monitoring
+              </span>
+            </Link>
           </motion.div>
         </div>
 
+        {/* Center - Search Bar */}
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -79,7 +83,9 @@ export const Navbar = ({ setMobileOpen, onSearch }: NavbarProps) => {
           </form>
         </motion.div>
 
+        {/* Right Section */}
         <div className="flex items-center gap-2">
+          {/* Mobile Search Button */}
           <Button
             variant="ghost"
             size="icon"
@@ -89,27 +95,43 @@ export const Navbar = ({ setMobileOpen, onSearch }: NavbarProps) => {
             <Search className="h-5 w-5" />
           </Button>
 
-              <Button variant="ghost" size="icon" className="relative">
-                <Bell className="h-5 w-5" />
-                <Badge className="absolute -top-1 -right-1 h-5 w-5 p-0 flex items-center justify-center bg-primary text-primary-foreground">
-                  3
-                </Badge>
-              </Button>
-        
+          {/* Home Button */}
+          <Button variant="ghost" size="icon" >
+            <Link to="/">
+              <Home className="h-5 w-5" />
+            </Link>
+          </Button>
 
-          
-              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                <Avatar className="h-8 w-8">
-                  <AvatarImage src={user?.avatar} />
-                  <AvatarFallback className="bg-primary/10 text-primary">
-                    {user?.name?.charAt(0) || 'U'}
-                  </AvatarFallback>
-                </Avatar>
-              </Button>
-       
+          {/* About Button */}
+          <Button variant="ghost" size="icon" >
+            <Link to="/about">
+              <Info className="h-5 w-5" />
+            </Link>
+          </Button>
+
+          {/* Notifications */}
+          <Button variant="ghost" size="icon" className="relative">
+            <Bell className="h-5 w-5" />
+            <Badge className="absolute -top-1 -right-1 h-5 w-5 p-0 flex items-center justify-center bg-primary text-primary-foreground">
+              3
+            </Badge>
+          </Button>
+
+          {/* User Avatar */}
+          <Button variant="ghost" className="relative h-8 w-8 rounded-full" >
+            <Link to="/profile">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src={user?.avatar} />
+                <AvatarFallback className="bg-primary/10 text-primary">
+                  {user?.name?.charAt(0) || 'U'}
+                </AvatarFallback>
+              </Avatar>
+            </Link>
+          </Button>
         </div>
       </div>
 
+      {/* Mobile Search */}
       <AnimatePresence>
         {searchOpen && (
           <motion.div

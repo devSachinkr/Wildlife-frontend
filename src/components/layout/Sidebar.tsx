@@ -72,7 +72,7 @@ export const Sidebar = ({
               <Leaf className="h-4 w-4 text-primary-foreground" />
             </div>
             <span className="font-bold text-lg bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
-              ForestWatch
+              Wildlife
             </span>
           </motion.div>
         )}

@@ -272,7 +272,7 @@ export const AppearanceSettings = () => {
                   <span className="text-primary-foreground text-sm">FW</span>
                 </div>
                 <div>
-                  <p className="font-medium">Forest Watch</p>
+                  <p className="font-medium">Wildlife</p>
                   <p className="text-sm text-muted-foreground">
                     Monitoring Dashboard
                   </p>

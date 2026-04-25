@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -34,6 +34,16 @@ export const Login = () => {
   const { setAuth, setLoading } = useAuthStore();
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const demoCredentials = useMemo(
+    () => [
+      { email: "researcher@forestwatch.com", password: "Researcher123" },
+      {
+        email: "conservationist@forestwatch.com",
+        password: "Conver123",
+      },
+    ],
+    [],
+  );
 
   const {
     register,
@@ -241,13 +251,20 @@ export const Login = () => {
               <p className="text-xs text-center text-muted-foreground mb-2">
                 Demo Credentials:
               </p>
-              <div className="flex gap-2 justify-center text-xs">
-                <code className="px-2 py-1 rounded bg-muted text-muted-foreground">
-                  admin@forestwatch.com
-                </code>
-                <code className="px-2 py-1 rounded bg-muted text-muted-foreground">
-                  Admin@123456
-                </code>
+              <div className="flex gap-2 justify-center text-xs flex-col">
+                {demoCredentials.map((cred, index) => (
+                  <div
+                    key={index}
+                    className="flex gap-2 justify-center text-xs"
+                  >
+                    <code className="px-2 py-1 rounded bg-muted text-muted-foreground">
+                      {cred.email}
+                    </code>
+                    <code className="px-2 py-1 rounded bg-muted text-muted-foreground">
+                      {cred.password}
+                    </code>
+                  </div>
+                ))}
               </div>
             </motion.div>
           </CardFooter>
