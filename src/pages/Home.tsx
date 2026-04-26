@@ -177,7 +177,7 @@ export const Home = () => {
             >
               <Sparkles className="h-4 w-4" />
               <span className="text-sm font-medium">
-                AI-Powered Conservation Platform
+               Platform For Conservationists & Researchers
               </span>
             </motion.div>
 
